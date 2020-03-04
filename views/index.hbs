@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+{{#if user}}
+    <p>Hello {{user}}!</p>
+    <p>Let's get some onboardings done</p>
+{{else}}
+    <h1>Please Login</h1>
+    <p>It seems like you're not logged in right now</p>
+    <button onclick="window.location.href = '{{signInUrl}}';">Click here to Log In</button>
+{{/if}}

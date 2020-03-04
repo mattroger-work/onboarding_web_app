@@ -1,0 +1,112 @@
+
+<h2>{{title}}</h2>
+<tbody>
+<table class="table">
+  <thead class="thead-light">
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Start Date</th>
+    <th scope="col">Personal Email</th>
+    <th scope="col">AD Import</th>
+    <th scope="col">IT Letter Sent</th>
+    <th scope="col">Licenses</th>
+    <th scope="col">Onboard</th>
+  </thead>
+    {{#if messages}}
+      {{#each messages}}
+        <tr>
+          <td>{{this.fields.Employee_x0020_Name_x0020_First}}</td>
+          <td>{{this.fields.Title}}</td>
+          <td>{{this.fields.DueDate}}</td>
+          <td>{{this.fields.Personal_x0020_Email}}</td>
+          <td>{{this.fields.Active_x0020_Directory_x0020_Imp}}</td>
+          <td>{{this.fields.IT_x0020_Welcome_x0020_Email_x00}}</td>
+          <td>
+            {{#if this.fields.Licenses_x0020_Needed}}
+              {{this.fields.Licenses_x0020_Needed}}
+            {{else}}
+              false
+            {{/if}}
+          </td>
+          <td><button onclick="onboard('{{this.fields.Licenses_x0020_Needed}}','{{this.id}}', '{{this.fields.Title}}', '{{this.fields.Employee_x0020_Name_x0020_First}}', '{{this.fields.DueDate}}', '{{this.fields.Personal_x0020_Email}}', '{{this.fields.Active_x0020_Directory_x0020_Imp}}', '{{this.fields.IT_x0020_Welcome_x0020_Email_x00}}', '{{this.fields.Preferred_x0020_name_x0020_for_x}}')">ONBOARD</button></td>
+        </tr>
+      {{/each}}
+      {{else}}
+        <p>It Seems there is no one to Onboard</p>
+        <br />
+        <span style='font-size:100px;'>&#9785;</span>
+    {{/if}}
+  </tbody>
+</table>
+<!--I can't get this to work how I want yet-->
+<!--<select onchange="change_amount()" style="float:right" id="amount">
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="25">25</option>
+</select>-->
+  <script>
+
+      function onboard(licenses, id, title, fName, dueDate, pEmail, adImp, wel, tek_email){
+        e3 = /E3+/g.test(licenses);
+        acrobat = /Acrobat+/g.test(licenses);
+        e1 = /E1+/g.test(licenses);
+        e5 = /E5+/g.test(licenses);
+        project = /Project+/g.test(licenses);
+        visio = /Visio+/g.test(licenses);
+        bluebeam = /Bluebeam+/g.test(licenses);
+        air_magnet = /Air+/g.test(licenses);
+        
+        obj = {
+          "last_name": title,
+          "first_name": fName,
+          "due_date": dueDate,
+          "per_email": pEmail,
+          "ad_imp": adImp,
+          "wel": wel,
+          "share_id": id,
+          "tek_email": fName + '.' + title + '@teksynap.com',
+          "licenses":[
+              {name: "e3", bool: e3},
+              {name: "acrobat", bool: acrobat},
+              {name: "e1", bool: e1},
+              {name: "e5", bool: e5},
+              {name: "project", bool: project},
+              {name: "visio", bool: visio},
+              {name: "bluebeam", bool: bluebeam},
+              {name: "air_magnet", bool: air_magnet}
+            ]
+        };
+
+        console.log(obj)
+
+        post_obj(obj)
+        
+      }
+
+      function post_obj(obj){
+        
+        //POST to onboard to complete onboardings
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          if(this.readyState == 4){
+            console.log(this.responseText);
+            console.log(this.status);
+          }
+        }
+        xhttp.open("POST", "/onboard", true);
+        xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhttp.send(JSON.stringify(obj));
+        
+        //console.log('Please reload the page to update the names')
+
+        setTimeout(() => {  window.location = '/onboard'; }, 2000);
+      }
+
+      /*
+      function change_amount(){
+        amount = document.getElementById('amount').value;
+
+        window.location = '/onboard?amount='+ amount;
+      }*/
+  </script>

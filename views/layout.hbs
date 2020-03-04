@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <ul>
+    {{#if active.home}}
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+      <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else if active.onboard}}
+      <li><a href="/">Home</a></li>
+      <li><a class="active" href="/onboard">HQ Onboarding Tracker</a></li>
+      <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else if active.onboard_sub}}
+      <li><a href="/">Home</a></li>
+      <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+      <li><a class="active" href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else}}
+        <li><a href="/">Home</a></li>
+        <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+        <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{/if}}
+  </ul>
+    {{{body}}}
+  </body>
+</html>
