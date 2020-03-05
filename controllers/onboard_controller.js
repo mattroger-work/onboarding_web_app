@@ -148,7 +148,7 @@ exports.get_hq_onboardings = async function(req, res, next) {
               succ = false;
               succ = await grou_con.assign_groups(client, tek_email); //works
               if(succ){
-                await user_con.reset_password(client, tek_email, pass);
+                await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
               }
             }
           }
