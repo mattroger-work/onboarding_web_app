@@ -6,6 +6,7 @@ exports.render_get = async function(req, res, next) {
     const accessToken = await auth_helper.getAccessToken(req.cookies, res)
     const userName = req.cookies.graph_user_name;
 
+    //IF THE USERS CREDENTIALS ISN'T IN COOKIES GET THE AUTH URL
     if(accessToken && userName){
         params.user = userName;
     }else{

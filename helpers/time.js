@@ -1,3 +1,4 @@
+//GETS THE DATE AND RETURNS IT AS A STRING FUNCTION
 exports.get_now = function(){
     var now = new Date()
     date = now.getDate()

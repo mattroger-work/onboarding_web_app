@@ -18,6 +18,7 @@ exports.assign_licenses = async function(client, license_obj, principal_name) {
         let licenses_needed = await order_licenses(license_obj);
         license_query_obj = [];
 
+        //THIS CREATES AND ARR OF AN OBJ THAT IS NEED FOR THE ADDLICENSES VAR
         for(i = 0; i < licenses_needed.length; i++){
           license_query_obj.push({
             disabledPlans: [],
@@ -47,6 +48,7 @@ exports.assign_licenses = async function(client, license_obj, principal_name) {
       }
   }
 
+  //THIS FUCNTION CREATES AN ARR WITH ALL THE LICENSE NAMES THAT THE USER NEEDS
   async function order_licenses(license_obj){
     let licenses_need = [];
     ctr = 0;

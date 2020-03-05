@@ -11,7 +11,7 @@ const hqOnboarding_id = '/169af5d4-390e-47f2-8a86-8970695cd407'
             "IT_x0020_Welcome_x0020_Email_x00" : true
           }
 
-          // Get the 10 newest messages from inbox
+          //SET THE VARS OF THE OBJ ON SHAREPOINT
           const result = await client
           .api('/sites/'+onboarding_id+'/lists/'+hqOnboarding_id+'/items/'+share_id+'/fields')
           .update(obj);

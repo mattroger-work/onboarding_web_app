@@ -10,7 +10,7 @@ const groups = {
 
 
 
-
+//ONLY ASSIGNS CUSTOMER GROUP BY THE USERS PRINCIPAL NAME 
 exports.assign_groups = async function(client, tek_email) {
       try{
 

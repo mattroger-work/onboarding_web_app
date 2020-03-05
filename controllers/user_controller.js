@@ -2,7 +2,8 @@ var graph = require('@microsoft/microsoft-graph-client');
 require('isomorphic-fetch');
 
 exports.reset_password = async function(client, principal_name, pass) {
-  
+      //RESETS THE USER PASSWORD TO WHAT THE PASS GEN MADE AND REQUIRES THEM TO CHANGE
+      //IT AND SIGN IN WITH MFA 
       try{
         var passwordProfile = {
           "forceChangePasswordNextSignIn": true,
@@ -31,7 +32,7 @@ exports.reset_password = async function(client, principal_name, pass) {
   
   
   exports.get_id = async function(client, principal_name) {
-    
+        //this gets the user id based on the principal name
         try{
           const result = await client
           .api('/users/'+principal_name)
@@ -52,7 +53,8 @@ exports.reset_password = async function(client, principal_name, pass) {
     }
 
     exports.set_usage_location = async function(client, principal_name){
-        
+        //this change the users location which is required in order to assign 
+        //the users licenses
         try{
         user_location ={
             usageLocation: "US"

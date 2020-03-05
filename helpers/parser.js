@@ -5,7 +5,7 @@ var path = require('path');
 const newFile_Full = path.resolve(__dirname, '../views/Welcome_Email.html');
 
 
-
+//PASRES THE HTML TEMPLATE AND EDITS IT SO IT HAS ALL THE INFO NEEDED
 exports.parse = async function(fName, lName, email, pass){
     console.log('password is ' + pass);
     const htmlFile = fs.readFileSync('views/Welcome_Email_temp.html', 'utf8');
@@ -42,7 +42,7 @@ exports.parse = async function(fName, lName, email, pass){
     rep.sync(password_change);
     rep.sync(sign_change);
 
-    
+    //EDITS THE CREATED_USERS JSON FILE WITH THE NEWEST USER CREATED
     obj = {first_name: fName, last_name: lName, email: email};
 
     fs.writeFileSync('created_users.json', JSON.stringify(obj), (err)=>{
