@@ -1,0 +1,33 @@
+1.Onboarding process for subcontractor
+2.Bootstrap a powershell script to add to DL
+    a.rn the new users created are saved in a json file as firstname, lastname, and
+    email
+3.Make it so the select menu will update based on the amount of results
+4.Change the full time list from DL to an O365 app
+    a.rn I can only update the customers group and not full time cuz customers 
+        is a security group
+5.Find out password polices
+6.What password is used when accounts are created
+7.Find license ids
+8.So the email sends it adds to groups and takes them off the sharepoint site, but 
+    there is an error with the licenses: Unable to update the specified properties 
+    for on-premises mastered Directory Sync objects or objects currently undergoing 
+    migration, there is also an error with the password reset: Unable to update 
+    the specified properties for on-premises mastered Directory Sync objects or 
+    objects currently undergoing migration
+
+
+
+DONE--------------------------------------------------------------------------------
+Make the assigning license dynamic
+    a.rn creates json data that holds and array of objects to save the 
+        data of what licenses they need
+    b.save the license names into an arr and then loop the names in another arr
+        for license names.length i++
+            arr = []
+            arr.push([{disabledPlans:[], skuId:licenses[license name[i]}])
+            base_licenses = {
+                addLicenses: arr,
+            removeLicenses: []
+        }
+     

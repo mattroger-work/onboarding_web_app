@@ -1,0 +1,12 @@
+const generator = require('generate-password');
+
+exports.gen = function(){
+    password = generator.generate({
+        length: 9,
+        numbers: true
+    });
+
+    console.log('The user password is: ' + password)
+    return password;
+
+}
