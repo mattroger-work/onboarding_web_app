@@ -6,11 +6,8 @@ const license_id = {
     "e3": "6fd2c87f-b296-42f0-b197-1e91e994b900",
     "power_bi": "a403ebcc-fae0-4ca2-8c8c-7a907fd6c235",
     "e5": "ProductSkuId_c7df2760-2c81-4ef7-b578-5b5392b571df",
-    "acrobat": "",
-    "project": "",
-    "visio": "c5928f49-12ba-48f7-ada3-0d743a3601d5",
-    "bluebeam": "",
-    "air_magnet": ""
+    "project": "09015f9f-377f-4538-bbb5-f75ceb09358a",
+    "visio": "c5928f49-12ba-48f7-ada3-0d743a3601d5"
 }
 
 exports.assign_licenses = async function(client, license_obj, principal_name) {
@@ -37,13 +34,13 @@ exports.assign_licenses = async function(client, license_obj, principal_name) {
         .version('v1.0')
         .post(base_licenses);
         
-        console.log('Licenses Added!')
+        console.log('Licenses Added!');
         return true;
         
 
       } catch (err) {
-        console.log('license err')
-        console.log(err)
+        console.log('license err');
+        console.log(err);
         return false;
       }
   }

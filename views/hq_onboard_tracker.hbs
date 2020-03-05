@@ -39,7 +39,8 @@
   </tbody>
 </table>
 <!--I can't get this to work how I want yet-->
-<!--<select onchange="change_amount()" style="float:right" id="amount">
+<!--
+<select onchange="change_amount()" style="float:right" id="amount">
     <option value="10">10</option>
     <option value="15">15</option>
     <option value="20">20</option>
@@ -49,13 +50,10 @@
 
       function onboard(licenses, id, title, fName, dueDate, pEmail, adImp, wel, tek_email){
         e3 = /E3+/g.test(licenses);
-        acrobat = /Acrobat+/g.test(licenses);
         e1 = /E1+/g.test(licenses);
         e5 = /E5+/g.test(licenses);
         project = /Project+/g.test(licenses);
         visio = /Visio+/g.test(licenses);
-        bluebeam = /Bluebeam+/g.test(licenses);
-        air_magnet = /Air+/g.test(licenses);
         
         obj = {
           "last_name": title,
@@ -68,13 +66,10 @@
           "tek_email": fName + '.' + title + '@teksynap.com',
           "licenses":[
               {name: "e3", bool: e3},
-              {name: "acrobat", bool: acrobat},
               {name: "e1", bool: e1},
               {name: "e5", bool: e5},
               {name: "project", bool: project},
-              {name: "visio", bool: visio},
-              {name: "bluebeam", bool: bluebeam},
-              {name: "air_magnet", bool: air_magnet}
+              {name: "visio", bool: visio}
             ]
         };
 
