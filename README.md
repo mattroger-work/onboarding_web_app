@@ -22,6 +22,8 @@ REDIRECT_URI=
     but there is an error with the password reset: Unable to update 
     the specified properties for on-premises mastered Directory Sync objects or 
     objects currently undergoing migration
+* Currently the access token is stored in a cookie to bigger deployments create
+    a database
 
 ### DONE--------------------------------------------------------------------------------
 
