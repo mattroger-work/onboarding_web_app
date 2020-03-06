@@ -1,4 +1,4 @@
-# onboarding_web_app
+# Onboarding Web App
 * When you create the app you must create a .env file with the following information:
 ```
 APP_ID=
