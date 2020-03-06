@@ -8,6 +8,8 @@ REDIRECT_URI=
 ```
 
 * Must create a created_users.json file
+* npm install to get json files and node_modules
+* npm start to start server, it listens on port 3000
 ## TODO----------------------------------------------------------------------------
 * Onboarding process for subcontractor
 * Bootstrap a powershell script to add to DL
@@ -18,8 +20,7 @@ REDIRECT_URI=
     * rn I can only update the customers group and not full time cuz customers 
         is a security group
 * What password is used when accounts are created
-* So the email sends it adds to groups and takes them off the sharepoint site,
-    but there is an error with the password reset: Unable to update 
+* Error with the password reset: Unable to update 
     the specified properties for on-premises mastered Directory Sync objects or 
     objects currently undergoing migration
 * Currently the access token is stored in a cookie to bigger deployments create

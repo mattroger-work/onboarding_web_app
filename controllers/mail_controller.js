@@ -66,3 +66,4 @@ exports.send_mail = async function(client, per_email, first_name, last_name, tek
       }
 
 }
+
