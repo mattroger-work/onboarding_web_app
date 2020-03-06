@@ -1,8 +1,6 @@
 .env
 *.json
-created_users.json
-node_modules
-
+node_modules/*
 
 
 
