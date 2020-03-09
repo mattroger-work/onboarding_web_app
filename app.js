@@ -9,6 +9,7 @@ require('dotenv').config()
 var index_route = require('./routes/index');
 var auth_route = require('./routes/auth');
 var onboard_route = require('./routes/onboard');
+var create_route = require('./routes/create');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(favicon(path.join(__dirname, 'public\\images', 'favicon.ico')));
 app.use('/', index_route);
 app.use('/auth', auth_route);
 app.use('/onboard', onboard_route);
+app.use('/create', create_route);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

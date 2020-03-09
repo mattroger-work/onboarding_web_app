@@ -60,7 +60,7 @@ const time = require('../helpers/time');
   }
 
   exports.get_sub_onboardings = async function(client, res) {
-    let params = { title: 'Sub-Contractors Onboarding Tracker', active: { onboard_sub: true }};
+    let params = { title: 'Sub-Contractors Onboarding Tracker', active: { onboard: true }};
   
       try{
 
