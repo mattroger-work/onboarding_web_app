@@ -1,7 +1,9 @@
 .env
 package-lock.json
-node_modules
 views/welcome_email.html
+node_modules/
+
+
 
 
 
