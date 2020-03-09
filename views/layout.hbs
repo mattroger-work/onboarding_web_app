@@ -7,24 +7,67 @@
   <body>
   <ul>
     {{#if active.home}}
-      <li><a class="active" href="/">Home</a></li>
-      <li><a href="/onboard">HQ Onboarding Tracker</a></li>
-      <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
-      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+      <li><a id="active" href="/">Home</a></li>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
     {{else if active.onboard}}
       <li><a href="/">Home</a></li>
-      <li><a class="active" href="/onboard">HQ Onboarding Tracker</a></li>
-      <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
-      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+        <div class="dropdown">
+          <button id="active" class="dropbtn">
+            Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
     {{else if active.onboard_sub}}
       <li><a href="/">Home</a></li>
-      <li><a href="/onboard">HQ Onboarding Tracker</a></li>
-      <li><a class="active" href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
-      <li style="float:right"><a href="/auth/signout">Signout</a></li>
+        <div class="dropdown">
+          <button id="active" class="dropbtn">
+            Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
     {{else}}
         <li><a href="/">Home</a></li>
-        <li><a href="/onboard">HQ Onboarding Tracker</a></li>
-        <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
         <li style="float:right"><a href="/auth/signout">Signout</a></li>
     {{/if}}
   </ul>
