@@ -102,10 +102,18 @@ button{
   text-align: left;
 }
 
+
+
 .dropdown-content a:hover {
-  background-color: #0099CC;
+  background-color: #111;
+  border-radius: 15px;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.dropbtn:hover{
+  background-color: #111;
+  border-radius: 15px;
 }
