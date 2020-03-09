@@ -25,6 +25,7 @@ REDIRECT_URI=
     objects currently undergoing migration
 * Currently the access token is stored in a cookie to bigger deployments create
     a database
+* The password reset and add to DL are the only things that don't work rn
 
 ### DONE--------------------------------------------------------------------------------
 
