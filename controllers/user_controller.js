@@ -1,6 +1,8 @@
 var graph = require('@microsoft/microsoft-graph-client');
 require('isomorphic-fetch');
 
+//----------------------------------------------------------------------------
+//this is not working for new people for some reason.........
 exports.reset_password = async function(client, principal_name, pass) {
       //RESETS THE USER PASSWORD TO WHAT THE PASS GEN MADE AND REQUIRES THEM TO CHANGE
       //IT AND SIGN IN WITH MFA 
@@ -29,7 +31,7 @@ exports.reset_password = async function(client, principal_name, pass) {
         return false;
       }
   }
-  
+  //-----------------------------------------------------------------------------
   
   exports.get_id = async function(client, principal_name) {
         //this gets the user id based on the principal name
