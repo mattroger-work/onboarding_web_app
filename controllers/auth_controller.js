@@ -1,4 +1,6 @@
 var auth_helper = require('../helpers/auth');
+var graph = require('@microsoft/microsoft-graph-client');
+require('isomorphic-fetch');
 
 exports.authorize = async function(req, res, next){
     // Get auth code
@@ -25,4 +27,26 @@ exports.authorize = async function(req, res, next){
     // Redirect to home
     res.redirect('/');
 
+}
+
+exports.get_client = async function(res, cookies){
+  const accessToken = await auth_helper.getAccessToken(cookies, res);
+  const userName = cookies.graph_user_name;
+  
+    if (accessToken && userName) {
+
+      // Initialize Graph client
+      const client = graph.Client.init({
+        authProvider: (done) => {
+          done(null, accessToken);
+        }
+      });
+
+      return client;
+      
+    } else {
+      // Redirect to home
+      res.redirect('/');
+      return false;
+    }
 }
