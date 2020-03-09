@@ -7,7 +7,6 @@ APP_SCOPES=
 REDIRECT_URI=
 ```
 
-* Must create a created_users.json file
 * npm install to get json files and node_modules
 * npm start to start server, it listens on port 3000
 ## TODO----------------------------------------------------------------------------
