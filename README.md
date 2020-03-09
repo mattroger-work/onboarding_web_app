@@ -18,13 +18,13 @@ REDIRECT_URI=
 * Change the full time list from DL to an O365 app
     * rn I can only update the customers group and not full time cuz customers 
         is a security group
-* What password is used when accounts are created
 * Error with the password reset: Unable to update 
     the specified properties for on-premises mastered Directory Sync objects or 
     objects currently undergoing migration
 * Currently the access token is stored in a cookie to bigger deployments create
     a database
 * The password reset and add to DL are the only things that don't work rn
+* Add a create sharepoint subsite
 
 ### DONE--------------------------------------------------------------------------------
 
@@ -50,4 +50,6 @@ REDIRECT_URI=
     * project = project 5
     * bluebeam = seperate
     * air_magenet = seperate
+* What password is used when accounts are created
+
      
