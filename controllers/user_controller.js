@@ -24,7 +24,7 @@ exports.reset_password = async function(client, principal_name, pass) {
         return true;
   
       } catch (err) {
-        console.log('password reset');
+        console.log('password reset err');
         console.log(err);
         return false;
       }
