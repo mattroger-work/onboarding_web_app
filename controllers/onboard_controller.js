@@ -37,6 +37,7 @@ const auth_con = require('../controllers/auth_controller');
               succ = await grou_con.assign_groups(client, tek_email); //works
               if(succ){
                 await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
+                res.send('Complete');
               }
             }
           }
