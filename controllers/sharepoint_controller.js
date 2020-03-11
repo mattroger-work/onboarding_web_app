@@ -48,14 +48,15 @@ const time = require('../helpers/time');
         .get();
 
         params.messages = result.value;
-        res.status(200);
-        res.render('hq_onboard_tracker', params);
+        //res.status(200);
+        //res.render('hq_onboard_tracker', params);
+        return result.value
 
       } catch (err) {
         params.message = 'Error retrieving messages';
         params.error = { status: `${err.code}: ${err.message}` };
         params.debug = JSON.stringify(err.body, null, 2);
-        res.render('error', params);
+        //res.render('error', params);
       }
   }
 

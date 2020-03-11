@@ -45,6 +45,12 @@ const auth_con = require('../controllers/auth_controller');
       }
   }
 
+  exports.render_get = async function(req, res, next){
+    let params = { title: 'HQ Onboarding Tracker', active: { onboard: true }};
+
+    res.render('hq_onboard_tracker', params);
+  }
+
   exports.get_hq_onboardings = async function(req, res, next){
     cookies = req.cookies;
 
@@ -54,10 +60,13 @@ const auth_con = require('../controllers/auth_controller');
     }
 
     client = await auth_con.get_client(res, cookies);
-    share_con.get_hq_onboardings(client, res, amount);
+    result = await share_con.get_hq_onboardings(client, res, amount);
+    res.json(result);
   }
 
   exports.get_sub_onboardings = async function(req, res, next){
+    cookies = req.cookies;
+
     client = await auth_con.get_client(res, cookies);
     share_con.get_sub_onboardings(client, res);
   }
