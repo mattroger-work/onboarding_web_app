@@ -16,7 +16,7 @@
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
             table_obj = this.responseText;
-            CreateTable(table_obj);
+            Create_hq_Table(table_obj);
           }
         }
         xhttp.open("GET", "/onboard/hq", true);

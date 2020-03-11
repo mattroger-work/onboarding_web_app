@@ -31,7 +31,7 @@ const time = require('../helpers/time');
         }
   }
 
-  exports.get_hq_onboardings = async function(client, res, amount) {
+  exports.get_hq_onboardings = async function(client, amount) {
     let params = { title: 'HQ Onboarding Tracker', active: { onboard: true }};
 
       try{
@@ -48,15 +48,13 @@ const time = require('../helpers/time');
         .get();
 
         params.messages = result.value;
-        //res.status(200);
-        //res.render('hq_onboard_tracker', params);
         return result.value
 
       } catch (err) {
         params.message = 'Error retrieving messages';
         params.error = { status: `${err.code}: ${err.message}` };
         params.debug = JSON.stringify(err.body, null, 2);
-        //res.render('error', params);
+        return err;
       }
   }
 

@@ -1,6 +1,7 @@
-
-      function CreateTable(table_obj){
+      //Create the hq table
+      function Create_hq_Table(table_obj){
         var element = '';
+        //table head
         table_head = 
         '<table id="table_root" class="table">' +
         '<thead class="thead-light">' +
@@ -14,10 +15,14 @@
           '<th scope="col">Onboard</th>' +
         '</thead>' +
         '<tbody>'
-
+        //Add the table head to the html
         document.getElementById("table_root").innerHTML = table_head;
         
+        //for each loop to create the ele of the table
        JSON.parse(table_obj).forEach(obj => {
+         date = new Date(obj.fields.DueDate);
+         due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+
          if(obj.fields.Licenses_x0020_Needed0){
            licenses = obj.fields.Licenses_x0020_Needed0;
          }else{
@@ -27,7 +32,7 @@
             "<tr>" +
               "<td>" + obj.fields.Employee_x0020_Name_x0020_First + "</td>" +
               "<td>" + obj.fields.Title + "</td>" +
-              "<td>" + obj.fields.DueDate + "</td>" +
+              "<td>" + due_date + "</td>" +
               "<td>" + obj.fields.Personal_x0020_Email + "</td>" +
               "<td>" + obj.fields.Active_x0020_Directory_x0020_Imp + "</td>" +
               "<td>" + obj.fields.IT_x0020_Welcome_x0020_Email_x00 + "</td>" +

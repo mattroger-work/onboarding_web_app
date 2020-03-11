@@ -60,7 +60,7 @@ const auth_con = require('../controllers/auth_controller');
     }
 
     client = await auth_con.get_client(res, cookies);
-    result = await share_con.get_hq_onboardings(client, res, amount);
+    result = await share_con.get_hq_onboardings(client, amount);
     res.json(result);
   }
 
