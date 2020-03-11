@@ -20,9 +20,11 @@
         
         //for each loop to create the ele of the table
        JSON.parse(table_obj).forEach(obj => {
+         //clean up the date
          date = new Date(obj.fields.DueDate);
          due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
 
+         //clean up licences
          if(obj.fields.Licenses_x0020_Needed0){
            licenses = obj.fields.Licenses_x0020_Needed0;
          }else{
@@ -42,9 +44,11 @@
           );
         });
 
+        //add the ele and the table footer
         document.getElementById("table_root").innerHTML += element + '  </tbody> </table>';
       }
 
+      //the actual onboarding function this organizes the data from the table to send
       function onboard(licenses, id, title, fName, dueDate, pEmail, adImp, wel){
         e3 = /E3+/g.test(licenses);
         e1 = /E1+/g.test(licenses);
@@ -76,6 +80,7 @@
         
       }
 
+      //this function posts the user to /onboard to do all the things need for onboardings
       function post_obj(obj){
         
         //POST to onboard to complete onboardings

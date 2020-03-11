@@ -25,6 +25,7 @@ REDIRECT_URI=http://localhost:3000/auth
     a database
 * The password reset and add to DL are the only things that don't work rn
 * Add a create sharepoint subsite
+* Uncheck leonards name from the sharepoint list 
 
 ### DONE--------------------------------------------------------------------------------
 
