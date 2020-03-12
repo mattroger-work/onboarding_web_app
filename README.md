@@ -8,7 +8,7 @@ REDIRECT_URI=http://localhost:3000/auth
 ```
 * npm install to get json files and node_modules
 * npm start to start server, it listens on port 3000
-## TODO----------------------------------------------------------------------------
+## TODO------------------------------------------------------------------------------
 * Onboarding process for subcontractor
 * Bootstrap a powershell script to add to DL
     * rn the new users created are saved in a json file as firstname, lastname, and

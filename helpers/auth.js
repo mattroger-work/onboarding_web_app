@@ -99,8 +99,8 @@ const credentials = {
   async function log_signin(user_name){
     const fs = require('fs');
     const date = new Date;
-    if(fs.statSync('logs', () =>{})){
-        if(fs.statSync('logs/signin.log', () =>{})){
+    if(fs.existsSync('logs')){
+        if(fs.existsSync('logs/signin.log')){
           console.log("append true")
           fs.appendFile("logs/signin.log","\nSign-in:" + user_name + ":" + date, () =>{return null;});
         }
