@@ -43,12 +43,11 @@ exports.reset_password = async function(client, principal_name, pass) {
           .get();
   
           console.log('User ID Collected');
-          console.log('user id ' + result.id)
   
           return result.id;
   
         } catch (err) {
-          console.log('user id');
+          console.log('user id err');
           console.log(err)
           return err;
         }

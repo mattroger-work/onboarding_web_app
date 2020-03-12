@@ -34,7 +34,7 @@ exports.assign_licenses = async function(client, license_obj, principal_name) {
         .version('v1.0')
         .post(base_licenses);
         
-        console.log('Licenses Added!');
+        console.log('Licenses Added');
         return true;
         
 
