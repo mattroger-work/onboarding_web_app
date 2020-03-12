@@ -35,7 +35,7 @@ exports.assign_groups = async function(client, tek_email) {
         .api('/groups/'+groups["customers"]+'/members/$ref')
         .version('v1.0')
         .post(obj);
-        console.log('customers added')
+        console.log('Customers added')
         
         console.log('Groups added');
 
