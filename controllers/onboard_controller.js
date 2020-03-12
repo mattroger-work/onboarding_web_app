@@ -8,6 +8,7 @@ const lic_con = require('../controllers/license_controller');
 const pass_gen = require('../helpers/password');
 const user_con = require('../controllers/user_controller');
 const auth_con = require('../controllers/auth_controller');
+const logger = require("../helpers/logger");
 
   exports.complete_onboarding = async function(req, res, next){
     //get req vars
@@ -38,6 +39,7 @@ const auth_con = require('../controllers/auth_controller');
               if(succ){
                 await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
                 res.send('Complete');
+                logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
             }
           }

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const logger = require("./logger");
 
 const credentials = {
     client: {
@@ -53,7 +54,7 @@ const credentials = {
     res.cookie('graph_token_expires', token.token.expires_at.getTime(), {maxAge: 3600000, httpOnly: true});
 
     //log the user sign-in
-    log_signin(user.name);
+    logger.log_signin(user.name);
   }
 
   function clearCookies(res) {
@@ -95,19 +96,3 @@ const credentials = {
   }
   
   exports.getAccessToken = getAccessToken;
-
-  async function log_signin(user_name){
-    const fs = require('fs');
-    const date = new Date;
-    if(fs.existsSync('logs')){
-        if(fs.existsSync('logs/signin.log')){
-          console.log("append true")
-          fs.appendFile("logs/signin.log","\nSign-in:" + user_name + ":" + date, () =>{return null;});
-        }
-    }else{
-      console.log("mkdir true")
-      fs.mkdir("./logs", ()=>{return null;});
-      fs.writeFile("logs/signin.log","\nSign-in:" + user_name + ":" + date, ()=>{return null;});
-    }
-
-  }

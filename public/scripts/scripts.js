@@ -15,6 +15,11 @@
           '<th scope="col">Onboard</th>' +
         '</thead>' +
         '<tbody>'
+        table = document.createElement("table");
+        document.getElementById("table_root").replaceWith(table);
+        table.id = "table_root";
+        table.className = "table";
+        
         //Add the table head to the html
         document.getElementById("table_root").innerHTML = table_head;
         
