@@ -39,7 +39,7 @@ const logger = require("../helpers/logger");
               succ = await grou_con.assign_groups(client, tek_email); //works
               if(succ){
                 await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
-                res.send('Complete');
+                res.send('Onboarding Complete');
                 logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
             }

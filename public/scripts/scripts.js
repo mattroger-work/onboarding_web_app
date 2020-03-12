@@ -142,9 +142,19 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
-            console.log(this.responseText);
-            console.log(this.status);
-            window.location = '/onboard';
+            //this callback function should reload only the table and not the entire page
+            console.log(this.responseText, ()=>{
+              var xhttp2 = new XMLHttpRequest();
+              xhttp2.onreadystatechange = function(){
+                if(this.readyState == 4){
+                  data = this.responseText;
+                  Create_hq_Table(data);
+                }
+              }
+              xhttp.open("GET", "/onboard/get", true);
+              xhttp.send();
+            }); 
+            //window.location = '/onboard';
           }
         }
         xhttp.open("POST", "/onboard", true);

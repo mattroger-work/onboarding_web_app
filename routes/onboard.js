@@ -6,7 +6,7 @@ var onboard_con = require('../controllers/onboard_controller');
 router.get('/', onboard_con.render_hq_get);
 //GET SUB-CONTRACTOR ONBOARDING HOMEPAGE 
 router.get('/sub', onboard_con.render_sub_get);
-
+//get data for sub table 
 router.get('/sub/get', onboard_con.get_sub_onboardings);
 //this is the get request for the table info
 router.get('/get', onboard_con.get_hq_onboardings)
