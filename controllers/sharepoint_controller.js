@@ -34,8 +34,6 @@ const time = require('../helpers/time');
   //exports.remove_assignTo = async function(client, share_id){}
 
   exports.get_hq_onboardings = async function(client, amount) {
-    let params = { title: 'HQ Onboarding Tracker', active: { onboard: true }};
-
       try{
         //get hq onboarding items
         const result = await client
@@ -49,20 +47,14 @@ const time = require('../helpers/time');
         .top(amount)
         .get();
 
-        params.messages = result.value;
         return result.value
 
       } catch (err) {
-        params.message = 'Error retrieving messages';
-        params.error = { status: `${err.code}: ${err.message}` };
-        params.debug = JSON.stringify(err.body, null, 2);
         return err;
       }
   }
 
-  exports.get_sub_onboardings = async function(client, res) {
-    let params = { title: 'Sub-Contractors Onboarding Tracker', active: { onboard: true }};
-  
+  exports.get_sub_onboardings = async function(client, amount) {
       try{
 
         //get sub onboarding items
@@ -73,17 +65,12 @@ const time = require('../helpers/time');
         .header('Prefer', 'HonorNonIndexedQueriesWarningMayFailRandomly')
         .filter("fields/Start_x0020_Date ge " + time.get_now())
         .orderby('fields/Start_x0020_Date')
-        .top(10)
+        .top(amount)
         .get();
 
-        params.messages = result.value;
-        res.status(200);
-        res.render('sub_onboard_tracker', params);
+        return result.value;
 
       } catch (err) {
-        params.message = 'Error retrieving messages';
-        params.error = { status: `${err.code}: ${err.message}` };
-        params.debug = JSON.stringify(err.body, null, 2);
-        res.render('error', params);
+        return err;
       }
   }

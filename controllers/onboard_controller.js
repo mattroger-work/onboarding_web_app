@@ -21,6 +21,7 @@ const logger = require("../helpers/logger");
 
     const pass = pass_gen.gen();
 
+    //where is this calling cookies from?
     client = await auth_con.get_client(res, cookies);
     
       succ = await share_con.onboard_person(client, share_id); //works
@@ -47,10 +48,24 @@ const logger = require("../helpers/logger");
       }
   }
 
-  exports.render_get = async function(req, res, next){
+  exports.render_hq_get = async function(req, res, next){
     let params = { title: 'HQ Onboarding Tracker', active: { onboard: true }};
+    cookies = req.cookies;
+    client = await auth_con.get_client(res, cookies);
 
-    res.render('hq_onboard_tracker', params);
+    if(client != false){
+      res.render('hq_onboard_tracker', params);
+    }
+  }
+
+  exports.render_sub_get  = async function(req, res, next){
+    let params = { title: 'Sub-Contractors Onboarding Tracker', active: { onboard: true }};
+    cookies = req.cookies;
+    client = await auth_con.get_client(res, cookies);
+
+    if(client != false){
+      res.render('sub_onboard_tracker', params);
+    }
   }
 
   exports.get_hq_onboardings = async function(req, res, next){
@@ -69,6 +84,12 @@ const logger = require("../helpers/logger");
   exports.get_sub_onboardings = async function(req, res, next){
     cookies = req.cookies;
 
+    var amount = 10;
+    if(req.query.amount){
+      amount = req.query.amount;
+    }
+
     client = await auth_con.get_client(res, cookies);
-    share_con.get_sub_onboardings(client, res);
+    result = await share_con.get_sub_onboardings(client, amount);
+    res.json(result);
   }

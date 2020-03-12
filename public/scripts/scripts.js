@@ -16,7 +16,7 @@
         '</thead>' +
         '<tbody>'
         table = document.createElement("table");
-        document.getElementById("table_root").replaceWith(table);
+        document.getElementById("root").replaceWith(table);
         table.id = "table_root";
         table.className = "table";
         
@@ -25,10 +25,10 @@
         
         //for each loop to create the ele of the table
        JSON.parse(table_obj).forEach(obj => {
-         //clean up the date
-         date = new Date(obj.fields.DueDate);
-         due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
-
+          //clean up the date
+          date = new Date(obj.fields.DueDate);
+          due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+          last_name = parse_name(obj.fields.Title);
          //clean up licences
          if(obj.fields.Licenses_x0020_Needed0){
            licenses = obj.fields.Licenses_x0020_Needed0;
@@ -38,19 +38,69 @@
           element += (
             "<tr>" +
               "<td>" + obj.fields.Employee_x0020_Name_x0020_First + "</td>" +
-              "<td>" + obj.fields.Title + "</td>" +
+              "<td>" + last_name + "</td>" +
               "<td>" + due_date + "</td>" +
               "<td>" + obj.fields.Personal_x0020_Email + "</td>" +
               "<td>" + obj.fields.Active_x0020_Directory_x0020_Imp + "</td>" +
               "<td>" + obj.fields.IT_x0020_Welcome_x0020_Email_x00 + "</td>" +
               "<td>" + licenses + "</td>" +
-              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+obj.fields.Title+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+obj.fields.Personal_x0020_Email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
+              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+obj.fields.Personal_x0020_Email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
             "</tr>"
           );
         });
 
         //add the ele and the table footer
         document.getElementById("table_root").innerHTML += element + '  </tbody> </table>';
+      }
+
+      //create the sub-contractors table
+      function Create_sub_Table(table_obj){
+        var element = '';
+        //table head
+        table_head = 
+        '<table id="table_root" class="table">' +
+        '<thead class="thead-light">' +
+          '<th scope="col">First Name</th>' +
+          '<th scope="col">Last Name</th>' +
+          '<th scope="col">Start Date</th>' +
+          '<th scope="col">Personal Email</th>' +
+          '<th scope="col">Onboard</th>' +
+        '</thead>' +
+        '<tbody>'
+        table = document.createElement("table");
+        document.getElementById("root").replaceWith(table);
+        table.id = "table_root";
+        table.className = "table";
+        
+        //Add the table head to the html
+        document.getElementById("table_root").innerHTML = table_head;
+        
+        //for each loop to create the ele of the table
+       JSON.parse(table_obj).forEach(obj => {
+          //clean up the date
+          date = new Date(obj.fields.Start_x0020_Date);
+          due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+          last_name = parse_name(obj.fields.Employee_x0020_Name_x0020_Last);
+         //clean up licences
+         if(obj.fields.Licenses_x0020_Needed0){
+           licenses = obj.fields.Licenses_x0020_Needed0;
+         }else{
+           licenses = false;
+         }
+          element += (
+            "<tr>" +
+              "<td>" + obj.fields.Employee_x0020_Name_x0020_First + "</td>" +
+              "<td>" + last_name + "</td>" +
+              "<td>" + due_date + "</td>" +
+              "<td>" + obj.fields.Title + "</td>" +
+              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+obj.fields.Personal_x0020_Email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
+            "</tr>"
+          );
+        });
+
+        //add the ele and the table footer
+        document.getElementById("table_root").innerHTML += element + '  </tbody> </table>';
+
       }
 
       //the actual onboarding function this organizes the data from the table to send
@@ -100,6 +150,11 @@
         xhttp.open("POST", "/onboard", true);
         xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         xhttp.send(JSON.stringify(obj));
+      }
+
+      function parse_name(name){
+        pattern = name.replace(/ Jr,+/g, '');
+        return pattern;
       }
 
       /*

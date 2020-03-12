@@ -1,33 +1,19 @@
 
 <h2>{{title}}</h2>
-<table class="table">
-  <thead class="thead-light">
-    <th scope="col">Last Name</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Start Date</th>
-    <th scope="col">Personal Email</th>
-    <th scope="col">Onboard</th>
-  </thead>
-  <tbody>
-    {{#if messages}}
-        {{#each messages}}
-            <tr>
-                <td>{{this.fields.Employee_x0020_Name_x0020_Last}}</td>
-                <td>{{this.fields.Employee_x0020_Name_x0020_First}}</td>
-                <td>{{this.fields.Start_x0020_Date}}</td>
-                <td>{{this.fields.Title}}</td>
-                <td><button>ONBOARD</button></td>
-            </tr>
-        {{/each}}
-    {{else}}
-        <p>It Seems there is no one to Onboard</p>
-        <br />
-        <span style='font-size:100px;'>&#9785;</span>
-    {{/if}}
-  </tbody>
-</table>
+<img class="loading" src="../images/loading.gif" alt="loading_icon" id="root" />
+
   <h3 style="color:red;">THIS SECTION IS NOT FINISHED YET IT ON DISPLAYS ONCOMING SUBCONTRACTORS</h3>
   <script>
-
+    $(document).ready(function(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          if(this.readyState == 4){
+            data = this.responseText;
+            Create_sub_Table(data);
+          }
+        }
+        xhttp.open("GET", "/onboard/sub/get", true);
+        xhttp.send();
+      }); 
 
   </script>

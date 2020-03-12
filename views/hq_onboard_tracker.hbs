@@ -1,10 +1,8 @@
 
 <h2>{{title}}</h2>
-<!--<table id="table_root" class="table">
-</table>-->
-<img src="images/loading.gif" alt="loading_icon" id="table_root" width="100px" />
-<!--I can't get this to work how I want yet-->
-<!--
+<img class="loading" src="images/loading.gif" alt="loading_icon" id="root" />
+
+<!--I can't get this to work how I want yet
 <select onchange="change_amount()" style="float:right" id="amount">
     <option value="10">10</option>
     <option value="15">15</option>
@@ -16,11 +14,11 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
-            table_obj = this.responseText;
-            Create_hq_Table(table_obj);
+            data = this.responseText;
+            Create_hq_Table(data);
           }
         }
-        xhttp.open("GET", "/onboard/hq", true);
+        xhttp.open("GET", "/onboard/get", true);
         xhttp.send();
       });  
   </script>
