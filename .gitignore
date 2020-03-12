@@ -3,7 +3,7 @@ package-lock.json
 views/welcome_email.html
 node_modules/
 created_users.json
-
+logs/*
 
 
 
