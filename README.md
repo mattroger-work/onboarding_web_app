@@ -1,12 +1,11 @@
 # Onboarding Web App
 * When you create the app you must create a .env file with the following information:
 ```
-APP_ID=
-APP_PASSWORD=
+APP_ID=CLIENT_ID_HERE
+APP_PASSWORD=CLIENT_SECRET_HERE
 APP_SCOPES=Directory.ReadWrite.All Group.Read.All Group.ReadWrite.All Mail.Read Mail.ReadWrite Mail.Send offline_access openid profile Sites.Read.All Sites.ReadWrite.All User.Read User.Read.All User.ReadBasic.All User.ReadWrite.All
 REDIRECT_URI=http://localhost:3000/auth
 ```
-
 * npm install to get json files and node_modules
 * npm start to start server, it listens on port 3000
 ## TODO----------------------------------------------------------------------------
@@ -26,6 +25,7 @@ REDIRECT_URI=http://localhost:3000/auth
 * The password reset and add to DL are the only things that don't work rn
 * Add a create sharepoint subsite
 * Uncheck leonards name from the sharepoint list 
+* I eventually wanna move the logs to a database
 
 ### DONE--------------------------------------------------------------------------------
 

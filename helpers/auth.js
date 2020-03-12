@@ -53,7 +53,7 @@ const credentials = {
     res.cookie('graph_token_expires', token.token.expires_at.getTime(), {maxAge: 3600000, httpOnly: true});
 
     //log the user sign-in
-    write_log(user.name);
+    log_signin(user.name);
   }
 
   function clearCookies(res) {
@@ -96,15 +96,18 @@ const credentials = {
   
   exports.getAccessToken = getAccessToken;
 
-  async function write_log(user_name){
+  async function log_signin(user_name){
     const fs = require('fs');
     const date = new Date;
-    if('../logs/sign_in'){
-      fs.appendFile("logs/signin","\nSign-in: " + user_name + ":" + date, () =>{
-        return null;
-      })
+    if(fs.statSync('logs', () =>{})){
+        if(fs.statSync('logs/signin.log', () =>{})){
+          console.log("append true")
+          fs.appendFile("logs/signin.log","\nSign-in:" + user_name + ":" + date, () =>{return null;});
+        }
     }else{
-      fs.writeFile("logs/signin","\nSign-in: " + user_name + ":" + date)
+      console.log("mkdir true")
+      fs.mkdir("./logs", ()=>{return null;});
+      fs.writeFile("logs/signin.log","\nSign-in:" + user_name + ":" + date, ()=>{return null;});
     }
 
   }
