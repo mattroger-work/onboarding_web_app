@@ -25,20 +25,31 @@ const logger = require("../helpers/logger");
     client = await auth_con.get_client(res, cookies);
     
       succ = await share_con.onboard_person(client, share_id); //works
+      res.send('AD and Welcome Email Check');
       if(succ){
         succ = false;
         succ = await mail_con.send_mail(client, per_email, first_name, last_name, tek_email, pass); //works
+        result = succ ? 'Welcome Email Sent' : 'Ended on Welcome Email';
+        res.send(result);
         if(succ){
           succ = false;
           succ = await user_con.set_usage_location(client, tek_email); //works
+          result = succ ? 'Usage Location set to US' : 'Ended on Usage Location';
+          res.send(result);
           if(succ){
             succ = false;
             succ = await lic_con.assign_licenses(client, licenses, tek_email); //works
+            result = succ ? 'Licenses Assigned' : 'Ended on License Assignment';
+            res.send(result);
             if(succ){
               succ = false;
               succ = await grou_con.assign_groups(client, tek_email); //works
+              result = succ ? 'Groups Assigned' : 'Ended on Group Assignment';
+              res.send(result);
               if(succ){
                 await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
+                result = succ ? 'User Password Reset' : 'Ended on Password Reset';
+                res.send(result);
                 res.send('Onboarding Complete');
                 logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
