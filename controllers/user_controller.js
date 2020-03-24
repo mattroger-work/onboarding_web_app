@@ -69,7 +69,7 @@ exports.reset_password = async function(client, principal_name, pass) {
 
           console.log("Location Added")
           return true;
-        }catch{
+        }catch(err){
             console.log("location err");
             console.log(err);
             return false;

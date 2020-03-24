@@ -23,40 +23,38 @@ const logger = require("../helpers/logger");
 
     //where is this calling cookies from?
     client = await auth_con.get_client(res, cookies);
-    
-      succ = await share_con.onboard_person(client, share_id); //works
-      res.send('AD and Welcome Email Check');
+    //so I wanna re-organize this I'm thinking, usage location, licenses, groups, sharepoint check,
+    //then send the welcome email, then reset password(cuz it doesn't work)
+
+      succ = false;
+      succ = await user_con.set_usage_location(client, tek_email); //works
+      result = succ ? 'Usage Location set to US' : 'Ended on Usage Location';
       if(succ){
         succ = false;
-        succ = await mail_con.send_mail(client, per_email, first_name, last_name, tek_email, pass); //works
-        result = succ ? 'Welcome Email Sent' : 'Ended on Welcome Email';
-        res.send(result);
+        succ = await lic_con.assign_licenses(client, licenses, tek_email); //works
+        result += succ ? '\nLicenses Assigned' : '\nEnded on License Assignment';
         if(succ){
           succ = false;
-          succ = await user_con.set_usage_location(client, tek_email); //works
-          result = succ ? 'Usage Location set to US' : 'Ended on Usage Location';
-          res.send(result);
+          succ = await grou_con.assign_groups(client, tek_email); //works
+          result += succ ? '\nGroups Assigned' : '\nEnded on Group Assignment';
           if(succ){
-            succ = false;
-            succ = await lic_con.assign_licenses(client, licenses, tek_email); //works
-            result = succ ? 'Licenses Assigned' : 'Ended on License Assignment';
-            res.send(result);
+            succ = await share_con.onboard_person(client, share_id); //works
+            result += succ ? '\nSharepoint Check' : '\nEnded on sharepoint check'
             if(succ){
               succ = false;
-              succ = await grou_con.assign_groups(client, tek_email); //works
-              result = succ ? 'Groups Assigned' : 'Ended on Group Assignment';
-              res.send(result);
+              succ = await mail_con.send_mail(client, per_email, first_name, last_name, tek_email, pass); //works
+              result += succ ? '\nWelcome Email Sent' : '\nEnded on Welcome Email';
               if(succ){
                 await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
-                result = succ ? 'User Password Reset' : 'Ended on Password Reset';
-                res.send(result);
-                res.send('Onboarding Complete');
+                result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
+                result += '\nOnboarding Complete';
                 logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
             }
           }
         }
       }
+      res.send(result);
   }
 
   exports.render_hq_get = async function(req, res, next){
