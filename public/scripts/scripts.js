@@ -27,8 +27,11 @@
        JSON.parse(table_obj).forEach(obj => {
           //clean up the date
           date = new Date(obj.fields.DueDate);
-          due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+          //months start a 0
+          month = date.getMonth() < 12 ? date.getMonth() + 1 : 1
+          due_date = month +'/'+ date.getDate() +'/'+ date.getFullYear();
           last_name = parse_name(obj.fields.Title);
+          per_email = parse_email(obj.fields.Personal_x0020_Email);
          //clean up licences
          if(obj.fields.Licenses_x0020_Needed0){
            licenses = obj.fields.Licenses_x0020_Needed0;
@@ -40,11 +43,11 @@
               "<td>" + obj.fields.Employee_x0020_Name_x0020_First + "</td>" +
               "<td>" + last_name + "</td>" +
               "<td>" + due_date + "</td>" +
-              "<td>" + obj.fields.Personal_x0020_Email + "</td>" +
+              "<td>" + per_email + "</td>" +
               "<td>" + obj.fields.Active_x0020_Directory_x0020_Imp + "</td>" +
               "<td>" + obj.fields.IT_x0020_Welcome_x0020_Email_x00 + "</td>" +
               "<td>" + licenses + "</td>" +
-              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+obj.fields.Personal_x0020_Email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
+              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+per_email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
             "</tr>"
           );
         });
@@ -137,13 +140,13 @@
 
       //this function posts the user to /onboard to do all the things need for onboardings
       function post_obj(obj){
-        
         //POST to onboard to complete onboardings
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
-            //log the response in the console
             console.log(this.responseText);
+            window.alert(this.responseText);
+            window.location = "/onboard";
           }
         }
         xhttp.open("POST", "/onboard", true);
@@ -154,6 +157,10 @@
       function parse_name(name){
         last_name = name.replace(/ Jr,+/g, '');
         return last_name;
+      }
+      function parse_email(email){
+        true_email = email.replace(/\s/g, '');
+        return true_email;
       }
 
       /*

@@ -18,6 +18,7 @@ const logger = require("../helpers/logger");
     const tek_email = req.body.tek_email;
     const share_id = req.body.share_id;
     const licenses = req.body.licenses;
+    const cookies = req.cookies;
 
     const pass = pass_gen.gen();
 
@@ -33,6 +34,7 @@ const logger = require("../helpers/logger");
         succ = false;
         succ = await lic_con.assign_licenses(client, licenses, tek_email); //works
         result += succ ? '\nLicenses Assigned' : '\nEnded on License Assignment';
+        await console.log("licenses: "+succ)
         if(succ){
           succ = false;
           succ = await grou_con.assign_groups(client, tek_email); //works

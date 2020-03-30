@@ -10,6 +10,7 @@ REDIRECT_URI=http://localhost:3000/auth
 * npm start to start server, it listens on port 3000
 ## TODO------------------------------------------------------------------------------
 * Onboarding process for subcontractor
+* Make sure licenses can return a false I just made it so that it will recurse once to add another license
 * Bootstrap a powershell script to add to DL
     * rn the new users created are saved in a json file as firstname, lastname, and
     email

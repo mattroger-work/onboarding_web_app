@@ -76,3 +76,18 @@ exports.reset_password = async function(client, principal_name, pass) {
         }
 
     }
+
+    exports.get_me = function(client){
+      try{
+        //change the user location
+        var result = await client
+        .api('me')
+        .version('v1.0')
+        .get();
+
+        console.log("me got")
+      }catch(err){
+        console.log("user err")
+        console.log(err)
+      }
+    }
