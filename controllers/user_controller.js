@@ -77,7 +77,7 @@ exports.reset_password = async function(client, principal_name, pass) {
 
     }
 
-    exports.get_me = function(client){
+    exports.get_me = async function(client){
       try{
         //change the user location
         var result = await client
@@ -86,8 +86,10 @@ exports.reset_password = async function(client, principal_name, pass) {
         .get();
 
         console.log("me got")
+        return result
       }catch(err){
         console.log("user err")
         console.log(err)
+        return false
       }
     }

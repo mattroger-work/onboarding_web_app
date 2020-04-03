@@ -57,7 +57,7 @@
       }
 
       //create the sub-contractors table
-      function Create_sub_Table(table_obj){
+      function Create_Table_sub(table_obj){
         var element = '';
         //table head
         table_head = 
@@ -82,7 +82,8 @@
        JSON.parse(table_obj).forEach(obj => {
           //clean up the date
           date = new Date(obj.fields.Start_x0020_Date);
-          due_date = date.getMonth() + '/' + date.getDate() + '/' + date.getFullYear();
+          month = date.getMonth() < 12 ? date.getMonth() + 1 : 1
+          due_date = month + '/' + date.getDate() + '/' + date.getFullYear();
           last_name = parse_name(obj.fields.Employee_x0020_Name_x0020_Last);
          //clean up licences
          if(obj.fields.Licenses_x0020_Needed0){

@@ -6,7 +6,16 @@ var user_con = require('../controllers/user_controller');
 
 exports.send_mail = async function(client, per_email, first_name, last_name, tek_email,pass){
 
-    p = await parser.parse(first_name, last_name, tek_email, pass);
+    user = await user_con.get_me(client);
+    //debug
+    console.log(user);
+    user_name = user.displayName;
+    user_email = user.mail;
+    user_title = user.jobTitle;
+    user_phone = user.mobilePhone;
+
+    p = await parser.parse(first_name, last_name, tek_email, pass, user_name, user_email, user_title, user_phone);
+    //await parser.parse_sign(user_name, user_email, user_title, user_phone);
 
     //so you have to wait for the file to read then send it
     message = fs.readFileSync('views/Welcome_Email.html', 'utf8');

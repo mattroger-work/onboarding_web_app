@@ -60,6 +60,7 @@ html{
 }
 
 button{
+  cursor: pointer;
   background-color: #0099CC;
   border: none;
   color: #f2f2f2;
