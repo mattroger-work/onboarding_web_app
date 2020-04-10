@@ -10,7 +10,6 @@ REDIRECT_URI=http://localhost:3000/auth
 * npm start to start server, it listens on port 3000
 ## TODO------------------------------------------------------------------------------
 * Onboarding process for subcontractor
-* Make sure licenses can return a false I just made it so that it will recurse once to add another license
 * Bootstrap a powershell script to add to DL
     * rn the new users created are saved in a json file as firstname, lastname, and
     email
@@ -25,7 +24,6 @@ REDIRECT_URI=http://localhost:3000/auth
     a database
 * The password reset and add to DL are the only things that don't work rn
 * Add a create sharepoint subsite
-* Uncheck leonards name from the sharepoint list 
 * I eventually wanna move the logs to a database
 
 ### DONE--------------------------------------------------------------------------------
@@ -53,5 +51,6 @@ REDIRECT_URI=http://localhost:3000/auth
     * bluebeam = seperate
     * air_magenet = seperate
 * What password is used when accounts are created
+* Make sure licenses can return a false I just made it so that it will recurse once to add another license
 
      

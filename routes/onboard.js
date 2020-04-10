@@ -12,5 +12,7 @@ router.get('/sub/get', onboard_con.get_sub_onboardings);
 router.get('/get', onboard_con.get_hq_onboardings)
 //POST DATA TO START THE ONBOARDING PROCESS
 router.post('/', onboard_con.complete_onboarding);
+//POST DATA TO START THE SUB-CONTRACTOR ONBOARDING
+router.post('/sub', onboard_con.complete_onboarding_sub)
 
 module.exports = router;

@@ -97,13 +97,36 @@
               "<td>" + last_name + "</td>" +
               "<td>" + due_date + "</td>" +
               "<td>" + obj.fields.Title + "</td>" +
-              "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+obj.fields.Personal_x0020_Email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
+              "<td><button onclick=\"onboard_sub('"+obj.fields.Title+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+last_name+"')\">ONBOARD</button></td>" +
             "</tr>"
           );
         });
 
         //add the ele and the table footer
         document.getElementById("table_root").innerHTML += element + '  </tbody> </table>';
+
+      }
+
+      function onboard_sub(per_email, first_name, last_name){
+        obj = {
+          "per_email":per_email,
+          "first_name":first_name,
+          "last_name":last_name
+        }
+
+        //WERHE ARE WE POSTING TOO?
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+          if(this.readyState == 4){
+            console.log(this.responseText);
+            window.alert(this.responseText);
+            window.location = "/onboard/sub";
+          }
+        }
+        xhttp.open("POST", "/onboard/sub", true);
+        xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        xhttp.send(JSON.stringify(obj));
+
 
       }
 

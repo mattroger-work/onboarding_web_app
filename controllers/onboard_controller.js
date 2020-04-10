@@ -59,6 +59,21 @@ const logger = require("../helpers/logger");
       res.send(result);
   }
 
+  
+  exports.complete_onboarding_sub = async function(req, res){
+    const per_email = req.body.per_email;
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const cookies = req.cookies;
+    const pass = pass_gen.gen();
+
+    client = await auth_con.get_client(res, cookies);
+
+    console.log('email:'+ per_email);
+    console.log('first_name:'+first_name);
+    console.log('last name:'+last_name);
+  }
+
   exports.render_hq_get = async function(req, res, next){
     let params = { title: 'HQ Onboarding Tracker', active: { onboard: true }};
     cookies = req.cookies;
