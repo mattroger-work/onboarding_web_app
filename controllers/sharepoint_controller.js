@@ -44,7 +44,7 @@ const time = require('../helpers/time');
         .filter("fields/DueDate ge " + time.get_now())
         .filter("fields/Active_x0020_Directory_x0020_Imp eq 'false'")
         .orderby('fields/DueDate')
-        .top(amount)
+        .top(50)
         .get();
 
         return result.value
