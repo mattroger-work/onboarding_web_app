@@ -119,6 +119,12 @@ exports.send_mail_sub = async function(client, per_email, first_name, last_name,
                 name: "Change LinkedIn Background.docx",
                 contentType: "application/msword",
                 contentBytes: att.docx
+              },
+              {
+                "@odata.type": "#microsoft.graph.fileAttachment",
+                name: "Accessing Microsoft Partner University.pdf",
+                contentType: "application/pdf",
+                contentBytes: att.pdf_msPartner
               }
             ]
           }
