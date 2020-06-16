@@ -26,9 +26,7 @@ const logger = require("../helpers/logger");
     client = await auth_con.get_client(res, cookies);
     //so I wanna re-organize this I'm thinking, usage location, licenses, groups, sharepoint check,
     //then send the welcome email, then reset password(cuz it doesn't work)
-
-      //edit start here
-      /*
+    
       succ = false;
       succ = await user_con.set_usage_location(client, tek_email); //works
       result = succ ? 'Usage Location set to US' : 'Ended on Usage Location';
@@ -58,10 +56,7 @@ const logger = require("../helpers/logger");
           }
         }
       }
-      res.send(result);*/
-
-      succ = await mail_con.send_mail(client, "matt.roger@teksynap.com", "Matt", "Roger", "matt.roger@teksynap.com", "Fake");
-      res.send("Matt onboarded")
+      res.send(result);
   }
 
   

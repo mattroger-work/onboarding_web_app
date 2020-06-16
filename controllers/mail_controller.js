@@ -53,6 +53,12 @@ exports.send_mail = async function(client, per_email, first_name, last_name, tek
                 name: "Change LinkedIn Background.docx",
                 contentType: "application/msword",
                 contentBytes: att.docx
+              },
+              {
+                "@odata.type": "#microsoft.graph.fileAttachment",
+                name: "Accessing Microsoft Partner University.pdf",
+                contentType: "application/pdf",
+                contentBytes: att.pdf_msPartner
               }
             ]
           }
@@ -101,7 +107,7 @@ exports.send_mail_sub = async function(client, per_email, first_name, last_name,
               }
             ],
             //change must also add to the b64 file
-            "attachments": [/*
+            "attachments": [
               {
                 "@odata.type": "#microsoft.graph.fileAttachment",
                 name: "teksynap-banner-logo.jpg",
@@ -119,12 +125,6 @@ exports.send_mail_sub = async function(client, per_email, first_name, last_name,
                 name: "Change LinkedIn Background.docx",
                 contentType: "application/msword",
                 contentBytes: att.docx
-              },*/
-              {
-                "@odata.type": "#microsoft.graph.fileAttachment",
-                name: "Accessing Microsoft Partner University.pdf",
-                contentType: "application/pdf",
-                contentBytes: att.pdf_msPartner
               }
             ]
           }
