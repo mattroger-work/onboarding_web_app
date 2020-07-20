@@ -76,7 +76,6 @@ exports.reset_password = async function(client, principal_name, pass) {
         }
 
     }
-
     exports.get_me = async function(client){
       try{
         //change the user location
