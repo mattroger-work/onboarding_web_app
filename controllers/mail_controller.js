@@ -1,6 +1,7 @@
 require('isomorphic-fetch');
 const fs = require('fs'); 
 const att = require('../attachments/base64');
+const att_sub = require('../attachments/base64_sub');
 const parser = require('../helpers/parser');
 var user_con = require('../controllers/user_controller');
 
@@ -83,11 +84,16 @@ exports.send_mail = async function(client, per_email, first_name, last_name, tek
 }
 
 exports.send_mail_sub = async function(client, per_email, first_name, last_name, pass){
-  //edit this so that is parse the sub-contractor email
-  //p = await parser.parse(first_name, last_name, tek_email, pass, user_name, user_email, user_title, user_phone);
-    //await parser.parse_sign(user_name, user_email, user_title, user_phone);
+  user = await user_con.get_me(client);
+    user_name = user.displayName;
+    user_email = user.mail;
+    user_title = user.jobTitle;
+    user_phone = user.mobilePhone;
 
-    //message = fs.readFileSync('views/Welcome_Email.html', 'utf8');
+  p = await parser.parse_sub(first_name, last_name, pass, user_name, user_email, user_title, user_phone);
+
+
+    message = fs.readFileSync('views/welcome_email_sub.html', 'utf8');
 
     try {
         mailMess ={
@@ -110,21 +116,21 @@ exports.send_mail_sub = async function(client, per_email, first_name, last_name,
             "attachments": [
               {
                 "@odata.type": "#microsoft.graph.fileAttachment",
-                name: "teksynap-banner-logo.jpg",
-                contentType: "image/jpeg",
-                contentBytes: att.image
-              },
-              {
-                "@odata.type": "#microsoft.graph.fileAttachment",
-                name: "BMS 7.8.0 Email Signature In Outlook WebApp.pdf",
+                name: "BMS 4.7.6 Timesheet Instructions.pdf",
                 contentType: "application/pdf",
-                contentBytes: att.pdf
+                contentBytes: att_sub.timesheet
               },
               {
                 "@odata.type": "#microsoft.graph.fileAttachment",
-                name: "Change LinkedIn Background.docx",
-                contentType: "application/msword",
-                contentBytes: att.docx
+                name: "Subcontractor Login To Unanet Cloud.pdf",
+                contentType: "application/pdf",
+                contentBytes: att_sub.login
+              },
+              {
+                "@odata.type": "#microsoft.graph.fileAttachment",
+                name: "Subcontractor Password Reset.pdf",
+                contentType: "application/pdf",
+                contentBytes: att_sub.pass_reset
               }
             ]
           }
