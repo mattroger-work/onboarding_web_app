@@ -24,8 +24,7 @@ const logger = require("../helpers/logger");
 
     //where is this calling cookies from?
     client = await auth_con.get_client(res, cookies);
-    //so I wanna re-organize this I'm thinking, usage location, licenses, groups, sharepoint check,
-    //then send the welcome email, then reset password(cuz it doesn't work)
+    
     
       succ = false;
       succ = await user_con.set_usage_location(client, tek_email); //works
@@ -65,13 +64,15 @@ const logger = require("../helpers/logger");
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const cookies = req.cookies;
-    const pass = pass_gen.gen();
+    const pass = await pass_gen.gen();
 
     client = await auth_con.get_client(res, cookies);
+    
+    succ = mail_con.send_mail_sub(client,per_email,first_name, last_name, pass);
 
-    console.log('email:'+ per_email);
-    console.log('first_name:'+first_name);
-    console.log('last name:'+last_name);
+    result = succ ? "Onboarding Completed" : "Onboarding Failed";
+
+    res.send(result);
   }
 
   exports.render_hq_get = async function(req, res, next){
