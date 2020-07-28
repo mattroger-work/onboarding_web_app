@@ -99,10 +99,9 @@ exports.send_mail_sub = async function(client, per_email, first_name, last_name,
         mailMess ={
           message:{
             //change
-            subject: 'Welcome to TekSynap!',
+            subject: 'TekSynap Time and Expense',
             body:{
               ContentType: 'HTML',
-              //change
               Content: message
             },
             ToRecipients:[

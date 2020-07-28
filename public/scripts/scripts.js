@@ -114,13 +114,14 @@
           "last_name":last_name
         }
 
-        //WERHE ARE WE POSTING TOO?
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
             console.log(this.responseText);
             window.alert(this.responseText);
             window.location = "/onboard/sub";
+          }else{
+            //loading signal icon here
           }
         }
         xhttp.open("POST", "/onboard/sub", true);
@@ -171,6 +172,8 @@
             console.log(this.responseText);
             window.alert(this.responseText);
             window.location = "/onboard";
+          }else{
+            //loading signal icon here
           }
         }
         xhttp.open("POST", "/onboard", true);
