@@ -4,7 +4,14 @@ const hqOnboarding_id = '/169af5d4-390e-47f2-8a86-8970695cd407';
 const time = require('../../helpers/time');
 
 exports.get_hq_onboardings = async function(client, amount) {
+
+    var filter_str = "fields/DueDate ge " + time.get_now() +
+        " and fields/Welcome_x0020_Email_x0020_Sent ne 'YES'" +
+        " and fields/Welcome_x0020_Email_x0020_Sent ne 'COMPLETE'" +
+        "and fields/Welcome_x0020_Email_x0020_Sent ne 'tb'";
+
     try{
+        // ms graph can't read empty text fields or null so I have to do a != to find them
       //get hq onboarding items
       //this will still get those that are completed also the date is kinda messed up.
       //I'm thinking with the date I am not getting the correct nums because arr start 0 lol
@@ -13,8 +20,7 @@ exports.get_hq_onboardings = async function(client, amount) {
       .version('v1.0')
       .expand('fields')
       .header('Prefer', 'HonorNonIndexedQueriesWarningMayFailRandomly')
-      .filter("fields/DueDate ge " + time.get_now())
-      .filter("fields/Welcome_x0020_Email_x0020_Sent ne 'tb'")
+      .filter(filter_str)
       .orderby('fields/DueDate')
       .top(50)
       .get();

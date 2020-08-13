@@ -2,7 +2,7 @@
 exports.get_now = function(){
     var now = new Date()
     date = now.getDate()
-    month = now.getMonth()
+    month = now.getMonth() + 1;
     year = now.getFullYear()
 
 

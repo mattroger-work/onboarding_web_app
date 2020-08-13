@@ -9,7 +9,7 @@ REDIRECT_URI=http://localhost:3000/auth
 * npm install to get json files and node_modules
 * npm start to start server, it listens on port 3000
 ## TODO------------------------------------------------------------------------------
-* Onboarding process for subcontractor
+* Onboarding process for subcontractor add to subcontractor group
 * Bootstrap a powershell script to add to DL
     * rn the new users created are saved in a json file as firstname, lastname, and
     email
@@ -23,7 +23,6 @@ REDIRECT_URI=http://localhost:3000/auth
 * Currently the access token is stored in a cookie to bigger deployments create
     a database
 * The password reset and add to DL are the only things that don't work rn
-* Add a create sharepoint subsite
 * I eventually wanna move the logs to a database
 
 ### DONE--------------------------------------------------------------------------------

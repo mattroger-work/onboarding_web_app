@@ -186,8 +186,11 @@
         return last_name;
       }
       function parse_email(email){
-        true_email = email.replace(/\s/g, '');
-        return true_email;
+        //for some reason this doesn't work now
+        //It says the replace isn't correct.
+        //I'm thinking maybe it's taking it as something other than a STRING
+        //true_email = email.replace(/\s/g, '');
+        return email;
       }
 
       /*

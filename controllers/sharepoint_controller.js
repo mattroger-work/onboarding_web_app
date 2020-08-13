@@ -34,6 +34,10 @@ const time = require('../helpers/time');
   //exports.remove_assignTo = async function(client, share_id){}
 
   exports.get_hq_onboardings = async function(client, amount) {
+      
+    filter_str = "fields/DueDate ge " + time.get_now() +
+      " and fields/Active_x0020_Directory_x0020_Imp eq 'false'";
+
       try{
         //get hq onboarding items
         const result = await client
@@ -41,8 +45,7 @@ const time = require('../helpers/time');
         .version('v1.0')
         .expand('fields')
         .header('Prefer', 'HonorNonIndexedQueriesWarningMayFailRandomly')
-        .filter("fields/DueDate ge " + time.get_now())
-        .filter("fields/Active_x0020_Directory_x0020_Imp eq 'false'")
+        .filter(filter_str)
         .orderby('fields/DueDate')
         .top(50)
         .get();
