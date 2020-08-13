@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/a939b2cc-eb96-41fd-9b71-344e4cab5533/resourceGroups/Teksynap-Onboarding-Web-App/providers/Microsoft.Web/sites/Teksynap-Onboarding-Web-App",
+    "appService.deploySubpath": "."
+}
