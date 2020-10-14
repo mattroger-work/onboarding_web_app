@@ -12,7 +12,8 @@
           '<th scope="col">AD Import</th>' +
           '<th scope="col">IT Letter Sent</th>' +
           '<th scope="col">Licenses</th>' +
-          '<th scope="col">Onboard</th>' +
+          '<th scope="col">Postition</th>'+
+          '<th scope="col">Onboard</th>' 
         '</thead>' +
         '<tbody>'
         table = document.createElement("table");
@@ -33,8 +34,8 @@
           last_name = parse_name(obj.fields.Title);
           per_email = parse_email(obj.fields.Personal_x0020_Email);
          //clean up licences
-         if(obj.fields.Licenses_x0020_Needed0){
-           licenses = obj.fields.Licenses_x0020_Needed0;
+         if(obj.fields.Licenses_x0020_Needed){
+           licenses = obj.fields.Licenses_x0020_Needed;
          }else{
            licenses = false;
          }
@@ -47,6 +48,7 @@
               "<td>" + obj.fields.Active_x0020_Directory_x0020_Imp + "</td>" +
               "<td>" + obj.fields.IT_x0020_Welcome_x0020_Email_x00 + "</td>" +
               "<td>" + licenses + "</td>" +
+              "<td>" + obj.fields.Position_x0020_Title + "</td>"+
               "<td><button onclick=\"onboard('"+licenses+"','"+obj.id+"','"+last_name+"','"+obj.fields.Employee_x0020_Name_x0020_First+"','"+obj.fields.DueDate+"','"+per_email+"','"+obj.fields.Active_x0020_Directory_x0020_Imp+"','"+obj.fields.IT_x0020_Welcome_x0020_Email_x00+"')\">ONBOARD</button></td>" +
             "</tr>"
           );

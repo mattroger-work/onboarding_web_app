@@ -9,6 +9,8 @@ const pass_gen = require('../helpers/password');
 const user_con = require('../controllers/user_controller');
 const auth_con = require('../controllers/auth_controller');
 const logger = require("../helpers/logger");
+//test
+const fs = require('fs')
 
   exports.complete_onboarding = async function(req, res, next){
     //get req vars
