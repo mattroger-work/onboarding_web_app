@@ -1,5 +1,3 @@
-var auth_helper = require('../helpers/auth');
-var graph = require('@microsoft/microsoft-graph-client');
 require('isomorphic-fetch');
 const mail_con = require('../controllers/mail_controller');
 const share_con = require('../controllers/sharepoint_controller');
@@ -9,8 +7,6 @@ const pass_gen = require('../helpers/password');
 const user_con = require('../controllers/user_controller');
 const auth_con = require('../controllers/auth_controller');
 const logger = require("../helpers/logger");
-//test
-const fs = require('fs')
 
   exports.complete_onboarding = async function(req, res, next){
     //get req vars
