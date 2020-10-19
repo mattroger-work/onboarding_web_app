@@ -8,7 +8,8 @@ const license_id = {
     "e5": "c7df2760-2c81-4ef7-b578-5b5392b571df",
     "project": "09015f9f-377f-4538-bbb5-f75ceb09358a",
     "visio": "c5928f49-12ba-48f7-ada3-0d743a3601d5",
-    "enterprise_mob": "efccb6f7-5641-4e0e-bd10-b4976e1bf68e"
+    "enterprise_mob": "efccb6f7-5641-4e0e-bd10-b4976e1bf68e",
+    "win10_e5": "1e7e1070-8ccb-4aca-b470-d7cb538cb07e"
 }
 
 exports.assign_licenses = async function(client, license_obj, principal_name, retry_order_licenses) {
@@ -78,8 +79,15 @@ exports.assign_licenses = async function(client, license_obj, principal_name, re
     for(i=0; i < license_obj.length; i++){
       if(license_obj[i].bool){
         licenses_need.push(license_obj[i].name);
+        //new addition those with e3 need windows 10 enterpirse e5 license
       }
     }
+
+    licenses_need.forEach((ele)=>{
+      if(ele == 'e3'){
+        licenses_need.push('win10_e5')
+      }
+    })
 
     //new param retry will let the function know if we tried before if retry=true then we are trying a second
     //time with the enterprise_mob license
@@ -90,16 +98,14 @@ exports.assign_licenses = async function(client, license_obj, principal_name, re
     }
 
     for(i=0; i < licenses_need.length; i++){
-      if(licenses_need[i] != 'e3' && licenses_need != 'e5'){
+      if(licenses_need[i] != 'e3' && licenses_need[i] != 'e5'){
         ctr++;
       }else{}
     }
 
-
     if(ctr == licenses_need.length){
       licenses_need.push("e1");
     }
-
 
     return licenses_need;
   }
