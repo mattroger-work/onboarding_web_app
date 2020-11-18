@@ -9,14 +9,7 @@ REDIRECT_URI=http://localhost:3000/auth
 * npm install to get json files and node_modules
 * npm start to start server, it listens on port 3000
 ## TODO------------------------------------------------------------------------------
-* Onboarding process for subcontractor add to subcontractor group
-* Bootstrap a powershell script to add to DL
-    * rn the new users created are saved in a json file as firstname, lastname, and
-    email
-* Make it so the select menu will update based on the amount of results
-* Change the full time list from DL to an O365 app
-    * rn I can only update the customers group and not full time cuz customers 
-        is a security group
+* Test the new password entry
 * Error with the password reset: Unable to update 
     the specified properties for on-premises mastered Directory Sync objects or 
     objects currently undergoing migration

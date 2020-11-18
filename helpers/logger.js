@@ -1,3 +1,5 @@
+//these functions haven't been working so I just commented them out.
+
 const fs = require('fs');
 
 async function check_dir(){

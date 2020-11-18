@@ -12,23 +12,15 @@ const groups = {
 
 //ONLY ASSIGNS CUSTOMER GROUP BY THE USERS PRINCIPAL NAME 
 exports.assign_groups = async function(client, tek_email) {
+  /*
       try{
 
-        id = await user.get_id(client, tek_email);
+        id = await user.get_user(client, tek_email);
+        id = id.id
 
         obj = {
             "@odata.id": obj_api + id
         };
-
-        /*
-        I can't assign this license because it is a DL rather than an O365 group
-        //add to full-time group
-        var result = await client
-        .api('/groups/'+groups["full_time"]+'/members/$ref')
-        .version('v1.0')
-        .post(obj);
-        console.log('full-time added');
-        */
        
         //add to customers group
         var result = await client
@@ -46,5 +38,6 @@ exports.assign_groups = async function(client, tek_email) {
         console.log('group err');
         console.log(err)
         return false;
-      }
+      }*/
+      return true;
   }

@@ -8,8 +8,6 @@ var user_con = require('../controllers/user_controller');
 exports.send_mail = async function(client, per_email, first_name, last_name, tek_email,pass){
 
     user = await user_con.get_me(client);
-    //debug
-    console.log(user);
     user_name = user.displayName;
     user_email = user.mail;
     user_title = user.jobTitle;

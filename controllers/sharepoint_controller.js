@@ -1,7 +1,7 @@
 require('isomorphic-fetch');
 const onboarding_id = 'synaptekcorp1.sharepoint.com,8a01d30a-1420-471d-9ecd-c82887f3084e,d6b56455-a47a-4f3e-8ccb-26af1125e45f';
-const hqOnboarding_id = '/169af5d4-390e-47f2-8a86-8970695cd407';
-const subOnboarding_id = '/c13b82c3-22d1-4618-81bd-03000a2c2aee';
+const hqOnboarding_id = '169af5d4-390e-47f2-8a86-8970695cd407';
+const subOnboarding_id = 'c13b82c3-22d1-4618-81bd-03000a2c2aee';
 const time = require('../helpers/time');
 
 
@@ -17,7 +17,7 @@ const time = require('../helpers/time');
 
           //SET THE VARS OF THE OBJ ON SHAREPOINT
           const result = await client
-          .api('/sites/'+onboarding_id+'/lists/'+hqOnboarding_id+'/items/'+share_id+'/fields')
+          .api('sites/'+onboarding_id+'/lists/'+hqOnboarding_id+'/items/'+share_id+'/fields')
           .update(obj);
 
           
@@ -31,8 +31,6 @@ const time = require('../helpers/time');
         }
   }
 
-  //exports.remove_assignTo = async function(client, share_id){}
-
   exports.get_hq_onboardings = async function(client, amount) {
       
     filter_str = "fields/DueDate ge " + time.get_now() +
@@ -41,7 +39,7 @@ const time = require('../helpers/time');
       try{
         //get hq onboarding items
         const result = await client
-        .api('sites/'+onboarding_id+'/lists'+hqOnboarding_id+'/items')
+        .api('sites/'+onboarding_id+'/lists/'+hqOnboarding_id+'/items')
         .version('v1.0')
         .expand('fields')
         .header('Prefer', 'HonorNonIndexedQueriesWarningMayFailRandomly')
@@ -62,7 +60,7 @@ const time = require('../helpers/time');
 
         //get sub onboarding items
         const result = await client
-        .api('sites/'+onboarding_id+'/lists'+subOnboarding_id+'/items')
+        .api('sites/'+onboarding_id+'/lists/'+subOnboarding_id+'/items')
         .version('v1.0')
         .expand('fields')
         .header('Prefer', 'HonorNonIndexedQueriesWarningMayFailRandomly')

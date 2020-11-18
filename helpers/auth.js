@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const logger = require("./logger");
+//const logger = require("./logger");
 
 const credentials = {
     client: {
@@ -54,7 +54,7 @@ const credentials = {
     res.cookie('graph_token_expires', token.token.expires_at.getTime(), {maxAge: 3600000, httpOnly: true});
 
     //log the user sign-in
-    logger.log_signin(user.name);
+    //logger.log_signin(user.name);
   }
 
   function clearCookies(res) {

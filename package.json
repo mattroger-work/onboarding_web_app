@@ -15,12 +15,12 @@
     "generate-password": "^1.5.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
-    "pdf-to-base64": "^1.0.2",
     "replace-in-file": "^5.0.2",
     "serve-favicon": "^2.5.0",
-    "simple-oauth2": "^3.3.0"
+    "simple-oauth2": "^3.3.0",
+    "node-powershell": "^4.0.0"
   }
 }

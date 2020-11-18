@@ -6,7 +6,8 @@ const lic_con = require('../controllers/license_controller');
 const pass_gen = require('../helpers/password');
 const user_con = require('../controllers/user_controller');
 const auth_con = require('../controllers/auth_controller');
-const logger = require("../helpers/logger");
+const powershell_con = require('../controllers/powershell_controller')
+//const logger = require("../helpers/logger");
 
   exports.complete_onboarding = async function(req, res, next){
     //get req vars
@@ -20,10 +21,9 @@ const logger = require("../helpers/logger");
 
     const pass = pass_gen.gen();
 
-    //where is this calling cookies from?
     client = await auth_con.get_client(res, cookies);
     
-    
+      //this section basically just makes sure the previous step has succeded before moving on
       succ = false;
       succ = await user_con.set_usage_location(client, tek_email); //works
       result = succ ? 'Usage Location set to US' : 'Ended on Usage Location';
@@ -44,10 +44,10 @@ const logger = require("../helpers/logger");
               succ = await mail_con.send_mail(client, per_email, first_name, last_name, tek_email, pass); //works
               result += succ ? '\nWelcome Email Sent' : '\nEnded on Welcome Email';
               if(succ){
-                await user_con.reset_password(client, tek_email, pass); //hmmmmmmm idk
+                await powershell_con.change_password(pass, tek_email) //works just need to work on authentication
                 result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
                 result += '\nOnboarding Complete';
-                logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
+                //logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
             }
           }
