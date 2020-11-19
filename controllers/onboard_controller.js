@@ -34,7 +34,7 @@ const powershell_con = require('../controllers/powershell_controller')
         await console.log("licenses: "+succ)
         if(succ){
           succ = false;
-          succ = await grou_con.assign_groups(client, tek_email); //works
+          succ = await grou_con.assign_groups(client, tek_email); //works but function just returns true since customers is dynamic
           result += succ ? '\nGroups Assigned' : '\nEnded on Group Assignment';
           if(succ){
             succ = await share_con.onboard_person(client, share_id); //works
@@ -45,7 +45,7 @@ const powershell_con = require('../controllers/powershell_controller')
               result += succ ? '\nWelcome Email Sent' : '\nEnded on Welcome Email';
               if(succ){
                 await powershell_con.change_password(pass, tek_email) //works just need to work on authentication
-                result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
+                //result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
                 result += '\nOnboarding Complete';
                 //logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
               }
