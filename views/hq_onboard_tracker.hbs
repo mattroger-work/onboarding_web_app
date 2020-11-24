@@ -1,7 +1,6 @@
 
 <h2>{{title}}</h2>
 <img class="loading" src="images/loading.gif" alt="loading_icon" id="root" />
-
 <!--I can't get this to work how I want yet
 <select onchange="change_amount()" style="float:right" id="amount">
     <option value="10">10</option>
@@ -15,7 +14,6 @@
         xhttp.onreadystatechange = function(){
           if(this.readyState == 4){
             data = this.responseText;
-            console.log(data)
             Create_hq_Table(data);
           }
         }
