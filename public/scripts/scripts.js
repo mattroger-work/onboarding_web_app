@@ -167,6 +167,13 @@
 
       //this function posts the user to /onboard to do all the things need for onboardings
       function post_obj(obj){
+
+        /*Turn off buttons
+        var btns = document.getElementsByTagName("button");
+        btns.forEach(btn => {
+          btn.disabled = true;
+        })*/
+        
         //POST to onboard to complete onboardings
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){

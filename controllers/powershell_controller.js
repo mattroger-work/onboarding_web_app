@@ -1,3 +1,4 @@
+/*
 const Shell = require('node-powershell');
 
 //init the powershell object
@@ -22,4 +23,4 @@ exports.change_password = function(pass, username){
         console.log(err)
     })
     
-}
+}*/

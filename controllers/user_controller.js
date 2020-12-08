@@ -42,6 +42,7 @@ require('isomorphic-fetch');
 //I changed this and still have no idea if it works
 //https://docs.microsoft.com/en-us/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=javascript
 exports.reset_password = async function(client, principal_name, pass) {
+  /*
   //RESETS THE USER PASSWORD TO WHAT THE PASS GEN MADE
   try{
     const passwordResetResponse = {
@@ -63,6 +64,31 @@ exports.reset_password = async function(client, principal_name, pass) {
 
   } catch (err) {
     console.log('password reset err');
+    console.log(err);
+    return false;
+  }*/
+
+  try{
+    var passwordProfile = {
+      "forceChangePasswordNextSignIn": true,
+      "forceChangePasswordNextSignInWithMfa": true,
+      "password": pass
+    };
+
+    user = {
+      passwordProfile: passwordProfile
+    };
+
+    const result = await client
+    .api('/users/'+principal_name)
+    .version('v1.0')
+    .update(user);
+
+    console.log('Password Reset!');
+    return true;
+
+  } catch (err) {
+    console.log('password reset');
     console.log(err);
     return false;
   }
