@@ -111,7 +111,7 @@ exports.assign_licenses = async function(client, license_obj, principal_name, re
   }
 
   //idk man gotta work on this to check the users licenses to make sure they have it
-  function check_licenses(client, principal_name){
+  async function check_licenses(client, principal_name){
     try{  
 
       //get all the users licenses
