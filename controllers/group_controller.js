@@ -10,34 +10,7 @@ const groups = {
 
 
 
-//ONLY ASSIGNS CUSTOMER GROUP BY THE USERS PRINCIPAL NAME 
+//Delete function, file and remove from onboard controller
 exports.assign_groups = async function(client, tek_email) {
-  /*
-      try{
-
-        id = await user.get_user(client, tek_email);
-        id = id.id
-
-        obj = {
-            "@odata.id": obj_api + id
-        };
-       
-        //add to customers group
-        var result = await client
-        .api('/groups/'+groups["customers"]+'/members/$ref')
-        .version('v1.0')
-        .post(obj);
-        console.log('Customers added')
-        
-        console.log('Groups added');
-
-        return true;
-
-        
-      } catch (err) {
-        console.log('group err');
-        console.log(err)
-        return false;
-      }*/
       return true;
   }

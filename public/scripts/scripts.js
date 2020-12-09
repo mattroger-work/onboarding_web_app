@@ -168,11 +168,14 @@
       //this function posts the user to /onboard to do all the things need for onboardings
       function post_obj(obj){
 
-        /*Turn off buttons
-        var btns = document.getElementsByTagName("button");
-        btns.forEach(btn => {
-          btn.disabled = true;
-        })*/
+        //Create img and replace with table to show that it is working
+        img = document.createElement("img");
+        img.src = 'images/loading.gif';
+        img.className = 'loading';
+        img.id = 'root';
+        img.alt = 'loading_icon';
+        document.getElementById("table_root").replaceWith(img);
+
         
         //POST to onboard to complete onboardings
         var xhttp = new XMLHttpRequest();
@@ -199,10 +202,3 @@
         true_email = email.replace(/\s/g, '');
         return true_email;
       }
-
-      /*
-      function change_amount(){
-        amount = document.getElementById('amount').value;
-
-        window.location = '/onboard?amount='+ amount;
-      }*/

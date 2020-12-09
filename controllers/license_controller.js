@@ -109,3 +109,30 @@ exports.assign_licenses = async function(client, license_obj, principal_name, re
 
     return licenses_need;
   }
+
+  //idk man gotta work on this to check the users licenses to make sure they have it
+  function check_licenses(client, principal_name){
+    try{  
+
+      //get all the users licenses
+      var result = await client
+      .api('/users/'+principal_name+'/licenseDetails')
+      .version('v1.0')
+      .get();
+
+      result.value.forEach(id =>{
+        if(id.skuId == license_id['p1'] || id.skuId == license_id['enterprise_mob']){
+          var p1 = true;
+        }
+        if(id.skuId == license_id['e1'] || id.skuId == license_id['e3']){
+          var e1 = true;
+        }
+        if(p1 == true && e1 == true){
+          return true;
+        }
+      })
+      return false;
+    }catch{
+      return false
+    }
+  }

@@ -31,7 +31,7 @@ const auth_con = require('../controllers/auth_controller');
         succ = false;
         succ = await lic_con.assign_licenses(client, licenses, tek_email); //works
         result += succ ? '\nLicenses Assigned' : '\nEnded on License Assignment';
-        await console.log("licenses: "+succ)
+        await console.log("licenses: "+ succ)
         if(succ){
           succ = false;
           succ = await grou_con.assign_groups(client, tek_email); //works but function just returns true since customers is dynamic
@@ -44,10 +44,12 @@ const auth_con = require('../controllers/auth_controller');
               succ = await mail_con.send_mail(client, per_email, first_name, last_name, tek_email, pass); //works
               result += succ ? '\nWelcome Email Sent' : '\nEnded on Welcome Email';
               if(succ){
-                await user_con.reset_password(client, tek_email, pass)//test with new hires
-                //result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
-                result += '\nOnboarding Complete';
-                //logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
+                succ = await user_con.reset_password(client, tek_email, pass);//works
+                result += succ ? '\nUser Password Reset' : '\nEnded on Password Reset';
+                if(succ){
+                  result += '\nOnboarding Complete';
+                  //logger.log_action(req.cookies.graph_user_name,'Completed Onboarding: '+tek_email);
+                }
               }
             }
           }

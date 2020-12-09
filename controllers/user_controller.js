@@ -38,35 +38,7 @@ require('isomorphic-fetch');
 
     }
 
-//----------------------------------------------------------------------------
-//I changed this and still have no idea if it works
-//https://docs.microsoft.com/en-us/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=javascript
 exports.reset_password = async function(client, principal_name, pass) {
-  /*
-  //RESETS THE USER PASSWORD TO WHAT THE PASS GEN MADE
-  try{
-    const passwordResetResponse = {
-      newPassword: pass
-    };
-
-    pass_id = get_password_id(client, principal_name)
-
-    //should gen a random password, try this out
-    const result = await client
-    .api('/users/'+principal_name+'/authentication/passwordMethods/'+pass_id+'/resetPassword')
-    .version('beta')
-    .post(passwordResetResponse);
-
-    console.log('new password: ' + result)
-
-    console.log('Password Reset!');
-    return true;
-
-  } catch (err) {
-    console.log('password reset err');
-    console.log(err);
-    return false;
-  }*/
 
   try{
     var passwordProfile = {
@@ -93,7 +65,7 @@ exports.reset_password = async function(client, principal_name, pass) {
     return false;
   }
 }
-//-----------------------------------------------------------------------------
+
 
     exports.set_usage_location = async function(client, principal_name){
         //this change the users location which is required in order to assign 

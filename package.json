@@ -20,7 +20,6 @@
     "morgan": "~1.9.1",
     "replace-in-file": "^5.0.2",
     "serve-favicon": "^2.5.0",
-    "simple-oauth2": "^3.3.0",
-    "node-powershell": "^4.0.0"
+    "simple-oauth2": "^3.3.0"
   }
 }
