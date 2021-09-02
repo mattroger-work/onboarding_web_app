@@ -1,0 +1,14 @@
+#holds personal info
+views/welcome_email.html
+views/welcome_email_sub.html
+#No need to put online
+node_modules/
+#uneeded json files also hold somewhat personal info
+package-lock.json
+#log files
+logs/*
+
+
+
+
+

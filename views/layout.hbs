@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="/scripts/scripts.js"></script>
+  </head>
+  <body>
+  <ul>
+    {{#if active.home}}
+      <li><a id="active" href="/">Home</a></li>
+        <div class="dropdown">
+          <button class="dropbtn">
+            IT Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            HR Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/hr">Onboarding</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else if active.onboard}}
+      <li><a href="/">Home</a></li>
+        <div id="active" class="dropdown">
+          <button class="dropbtn">
+            IT Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            HR Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/hr">Onboarding</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else if active.hr}}
+      <li><a href="/">Home</a></li>
+        <div class="dropdown">
+          <button  class="dropbtn">
+            IT Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding</a></li>
+              <br />
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button id="active" class="dropbtn">
+            HR Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/hr">Onboarding</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{else}}
+        <li><a href="/">Home</a></li>
+        <div class="dropdown">
+          <button class="dropbtn">
+            IT Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/onboard">HQ Onboarding Tracker</a></li>
+              <li><a href="/onboard/sub">Sub-Contractor Onboarding Tracker</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">
+            HR Onboarding
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <ul>
+              <li><a href="/hr">Onboarding</a></li>
+            </ul>
+          </div>
+        </div>
+        <li style="float:right"><a href="/auth/signout">Signout</a></li>
+    {{/if}}
+  </ul>
+    {{{body}}}
+  </body>
+</html>
