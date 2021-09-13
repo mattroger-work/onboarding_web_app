@@ -1,8 +1,8 @@
 require('isomorphic-fetch');
-const onboarding_id = 'synaptekcorp1.sharepoint.com,8a01d30a-1420-471d-9ecd-c82887f3084e,d6b56455-a47a-4f3e-8ccb-26af1125e45f';
-const hqOnboarding_id = '169af5d4-390e-47f2-8a86-8970695cd407';
-const subOnboarding_id = 'c13b82c3-22d1-4618-81bd-03000a2c2aee';
-const userInfoList_id = "686d4c23-168c-437e-a198-8135c0fd2b83";
+const onboarding_id = '####';
+const hqOnboarding_id = '####';
+const subOnboarding_id = '####';
+const userInfoList_id = "####";
 const time = require('../helpers/time');
 
 
